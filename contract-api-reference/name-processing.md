@@ -43,10 +43,10 @@ A sample implementation in Python is provided below.
 ```python
 def namehash(name):
   if name == '':
-    return '\0' * 32
+    return b'\0' * 32
   else:
     label, _, remainder = name.partition('.')
-    return sha3(namehash(remainder) + sha3(label))
+    return keccak(namehash(remainder) + keccak(text=label))
 ```
 
 Namehash is specified in [EIP 137](https://eips.ethereum.org/EIPS/eip-137).
